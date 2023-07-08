@@ -46,6 +46,12 @@
 
 </head>
 <body>
+
+    <!-- add product form  -->
+    <div class="add-product-form-container">
+        
+    </div>
+
     <!-- main container  -->
     <div class="container">
 
@@ -57,6 +63,19 @@
                 <div class="logo-container">
                     <div class="logo">
                         <img src="../img/facebook-icon.png" alt="">
+                    </div>
+                </div>
+
+                <!-- search bar  -->
+                <div class="search-bar-container">
+                    <div class="search-bar">
+                        <button class="search-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <input type="search" name="search" id="search" placeholder="Search for Products, Brands and More">
+                    </div>
+                    <div class="live-search-result-container">
+                        
                     </div>
                 </div>
     
@@ -208,6 +227,60 @@
         $(document).ready(function(){
             wishlistItemCount();
             cartItemCount();
+
+            // set interval for looking wheather the searchbar  is empty or not 
+            setInterval(isSearchBarEmpty, 100);
+
+            //code for live search bar
+             $(document).on("keyup", "#search", function(e) {
+                e.preventDefault();
+                
+                if($("#search").val()=='')
+                {
+                    $(".live-search-result-container").css('display', 'none');
+                }
+                else
+                {
+                    let search_data=$("#search").val();                    
+                    $.ajax({
+                        url: "liveSearch.php",
+                        type: "POST",
+                        data: {search_data: search_data},
+                        success: function(data)
+                        {
+                            $(".live-search-result-container").css('display', 'flex');
+                            $(".live-search-result-container").html(data);
+                        }
+                    })
+                }
+
+            });
+
+
+             // code for when user click on his order to view details
+             $(document).on("click", ".order-item", function(e) {
+                e.preventDefault();
+                let order_id=$(this).data('order-id');
+                console.log("order view  clicked "+order_id);
+                $.ajax({
+                    url: "viewOrder.php",
+                    type: "POST",
+                    data: {order_id: order_id},
+                    success: function(data)
+                    {
+                        $(".add-product-form-container").html(data);
+                        $(".add-product-form-container").css("display", "flex");
+                    }
+                })
+            });
+
+             // code for when click on  cart tab
+             $(document).on("click", ".orders-menu", function(e) {
+                e.preventDefault();
+                console.log("orders clicked");
+                loadOrders();
+
+            });
 
             //code for when click on Place order button
             $(document).on("click", "#place-order-from-cart-btn-id", function(e) {
@@ -519,6 +592,35 @@
 //              function coding area start 
 //***********************************************************
 
+            // function for checking whether the search bar is empty or not  
+            function isSearchBarEmpty()
+            {
+                if($("#search").val()=='')
+                {
+                    $(".live-search-result-container").css('display', 'none');
+                }
+            }
+
+            // code for form close button 
+            $(document).on("click", ".form-close-btn", function(e){
+                // console.log("add clicked");
+                $(".form-container").remove();
+                $(".add-product-form-container").css("display", "none");
+                $("body").css("overflow", "auto");
+            });
+
+             // function for loading orders 
+             function loadOrders()
+            {
+                $.ajax({
+                    url: "/e-commerce/php/loadOrdersItem.php",
+                    type: "POST",
+                    data: {},
+                    success: function(data) {
+                        $(".middle").html(data);
+                    }
+                });
+            }
 
             // function for loading wishlists count
             function wishlistItemCount() {

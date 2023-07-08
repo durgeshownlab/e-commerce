@@ -12,6 +12,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
+    /* background-color: #f1f3f6; */
     background-color: #f1f3f6;
 }
 
@@ -32,8 +33,9 @@
     border-bottom: 1px solid #c0c0c0;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
-
+/* code for logo container */
 .logo-container
 {
     width: 20%;
@@ -59,9 +61,124 @@
     height: 100%;
 }
 
+/* code for search bar  */
+.search-bar-container
+{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    /* border: 2px solid red; */
+}
+
+.search-bar
+{
+    width: auto;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    background-color: #f0f5ff;
+    border-radius: 5px;
+    /* border: 2px solid black; */
+}
+
+.search-btn
+{
+    width: 45px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.search-btn .fa-magnifying-glass
+{
+    font-size: 1.2rem;
+    color: #727579;
+}
+
+#search
+{
+    width: 30vw;
+    height: 100%;
+    /* padding: 5px; */
+    outline: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #2c2c2c;
+    padding-right: 5px;
+    
+}
+
+.live-search-result-container
+{
+    width: 100%;
+    height: 300px;
+    /* border: 1px solid red;*/
+    background-color: #fff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 2;
+    position: absolute;
+    top: 90%;
+    display: none;
+}
+
+.search-result-item-container
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.search-result-item
+{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+}
+
+.search-result-item:hover
+{
+    background-color: #f0f5ff;
+}
+
+.search-result-image
+{
+    width: auto;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.search-result-product-name .category
+{
+    color: #23b3cc;
+}
+
+.result-not-found
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* code for nav bar  */
 .nav-bar-container
 {
-    width: 80%;
+    width: fit-content;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -115,6 +232,7 @@
     height: 100%;
     display: flex;
     justify-content: space-between;
+
 }
 
 /* code  for  right menubar  */
@@ -281,6 +399,351 @@
 {
     width: 100%;
     height: auto;
+}
+/* code for order setion  */
+
+.order-item-container
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f3f6;
+}
+
+.order-item-container h3
+{
+    width: 80%;
+    padding: 10px 0;
+}
+.order-item 
+{
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 20px 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.order-item:hover
+{
+    box-shadow: 0px 3px 10px -7px black;
+
+}
+
+.order-image-container
+{
+    width: 20%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.order-image-container img
+{
+    width: 100px;
+}
+
+.order-product-name-desc
+{
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.order-product-name p
+{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.order-product-desc p
+{
+    font-size: 1rem;
+    font-weight: 400;
+    padding-top: 5px;
+    color: #5d5d5d;
+}
+
+.order-id
+{
+    display: flex;
+    padding-top: 15px;
+}
+
+.order-id p
+{
+    font-size: 1rem;
+    font-weight: 400;
+    
+    color: #5d5d5d;
+}
+
+.order-product-quantity-price
+{
+    width: 20%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.order-product-quantity p
+{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.order-product-price p
+{
+    font-size: 1rem;
+    font-weight: 400;
+    padding-top: 5px;
+}
+
+.order-delivery-status-container
+{
+    width: 20%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.order-delivery-status
+{
+    display: flex;
+    align-items: center;
+}
+
+.order-delivery-status i
+{
+    color: green;
+    font-size: 0.6rem;
+}
+
+.order-delivery-status p
+{
+    padding-left: 5px;
+    font-weight: 500;
+}
+
+/* code for add product form container  */
+.add-product-form-container
+{
+    width: 100%;
+    height: 100vh;
+    background-color: #0000006c;
+    position: fixed;
+    z-index: 1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.form-container
+{
+    width: 50%;
+    height: 95vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    /* justify-content: center; */
+}
+
+
+.form-header
+{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    background-color: rgb(238, 238, 238);
+}
+
+.form-close-btn
+{
+    /* width: auto; */
+    height: 40px;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border: 2px solid #23b3cc;
+    border-radius: 50%;
+    color: #23b3cc;
+    cursor: pointer;
+}
+
+.form-close-btn:hover
+{
+    background-color: #23b3cc;
+    color: #fff;
+}
+
+
+
+
+/* code for card in orders tab  */
+
+.view-order-form-container
+{
+    width: 80%;
+    height: auto;
+    /* border: 2px solid red; */
+}
+
+#view-order-details-id
+{
+    width: 100%;
+    height: auto;
+    /* border: 2px solid red; */
+    background-color: #fff;
+}
+
+.card 
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-image-container
+{
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card-image-container img
+{
+    width: 250px;
+    height: auto;
+    display: flex;
+}
+
+.card-product-details,
+.card-payment-details,
+.card-delivery-address-details
+{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    border-left: 1px solid #bcbcbc;
+}
+
+.card-product-details 
+.product-name-desc-container,
+.product-price-quantity-container,
+.product-total-price-container
+{
+    width: 100%;
+}
+
+.product-name-desc-container .product-name
+{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.product-name-desc-container .product-desc
+{
+    font-weight: 300;
+    padding-top: 5px;
+}
+
+.product-price-quantity-container .product-price
+{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.product-price-quantity-container .product-quantity
+{
+    font-weight: 300;
+    padding-top: 5px;
+}
+
+.product-total-price-container .product-total-price
+{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.product-total-price-container .product-total-price span
+{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card-payment-details div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-payment-details div p
+{
+    font-weight: 500;
+}
+.card-payment-details div span
+{
+    font-weight: 400;
+}
+
+.product-delivery-status select
+{
+    height: 30px;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.card-delivery-address-details .product-delivery-address-title p
+{
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.card-delivery-address-details div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-delivery-address-details div p
+{
+    font-weight: 500;
+    font-size: 1rem;
+}
+.card-delivery-address-details div span
+{
+    /* font-weight: 500; */
+    font-size: 1rem;
+    padding-top: 5px;
 }
 
 /* code for cart section  */

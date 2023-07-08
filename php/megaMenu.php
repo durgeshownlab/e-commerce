@@ -646,6 +646,13 @@
     if(isset($_SESSION['user_id']) && isset($_SESSION['name']) && isset($_SESSION['email']) && isset($_SESSION['mobile']) && isset($_SESSION['user_type']))
     {
         $output .='
+        <div class="menu-item orders-menu">
+            <a href="#">
+                <i class="fa-solid fa-box-open">
+                </i>
+                Orders
+            </a>
+        </div>
         <div class="menu-item cart-menu">
             <a href="#">
                 <i class="fa-solid fa-cart-shopping">
