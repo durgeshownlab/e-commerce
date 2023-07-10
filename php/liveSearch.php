@@ -33,7 +33,7 @@ else
 {
     $output .='
         <div class="result-not-found">
-            Result Not Found For <b>'.$search_data.'</b>
+            Result Not Found For <b>&nbsp;'.$search_data.'</b>
         </div>';
 }
 

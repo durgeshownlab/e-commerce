@@ -711,3 +711,86 @@ table tr:hover
     font-size: 1rem;
     padding-top: 5px;
 }
+
+/* code for filter bar  */
+
+.filter-bar-container
+{
+    width: 100%;
+    height: auto        ;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.filter-button
+{
+    height: 90%;
+    width: fit-content;
+    /* border: 2px solid  red; */
+    background-color: #23b3cc;
+    color: #fff;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.filter-button:hover
+{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.filter-button:hover > .filter-list-container
+{
+    display: flex;
+}
+
+.filter-list-container
+{
+    width: 150px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 4px 10px -7px #000;
+    border-radius: 5px;
+    color: #000000;
+    cursor: default;
+    display: none;
+}
+
+.filter-list
+{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-list p
+{
+    padding-left: 5px;
+    font-weight: 500;
+}
+.payment-mode-filter
+{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item
+{
+    width: auto;
+    display: flex;
+    padding: 3px 5px;
+}
