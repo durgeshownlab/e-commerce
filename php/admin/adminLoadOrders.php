@@ -3,11 +3,37 @@
     try
     {
         include("../dbconnect/connection.php");
+        $output ='';
 
         $sql="select * from orders order by order_date desc";
         $result=mysqli_query($conn, $sql);
-    
-        $output='<table class="product-item-container">
+        
+        $output .='
+            <div class="filter-bar-container">
+                <div class="filter-bar"></div>
+                <div class="filter-button">
+                    <i class="fa-solid fa-filter"></i>&nbsp;Filter
+                    <div class="filter-list-container">
+                        <div class="filter-list">
+                            <div class="payment-mode-filter">
+                                <p>Payment Mode</p>
+                                <div class="filter-item">
+                                    <input type="checkbox" name="payment-mode[]" id="pod-filter" value="pod">
+                                    <label for="pod-filter">POD</label>
+                                </div>
+
+                                <div class="filter-item">
+                                    <input type="checkbox" name="payment-mode[]" id="online-filter" value="online">
+                                    <label for="online-filter">Online</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ';
+
+        $output .='<table class="product-item-container">
                     <tr class="table-heading">
                         <th>
                             <p>Order ID</p>
@@ -67,7 +93,7 @@
                         <p>'.$row['quantity'].'</p>
                     </td>
                     <td class="total-price">
-                        <p>'.$row['total_price'].'</p>
+                        <p>&#8377;'.number_format($row['total_price']).'</p>
                     </td>
                     <td class="payment-method">
                         <p>'.ucwords($row['payment_method']).'</p>

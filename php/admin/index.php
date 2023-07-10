@@ -786,8 +786,28 @@
                 console.log("order reloaded");
                 loadOrders();
             });
-            
-            
+
+
+        //***************************************************
+        //      code for filter 
+        //***************************************************
+            $(document).on("change", "input[name=\"payment-mode[]\"]", function(e){
+                let selected_item = [];
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    selected_item.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'adminFilter.php',
+                    type: 'POST',
+                    data: { payment_method: selected_item}, 
+                    success: function(data) {
+                        // console.log(data);
+                        $('.product-item-container').html(data);
+                    }
+                });
+            });
+
 
         //  ****************************************************
         //      from here i will write only function code
