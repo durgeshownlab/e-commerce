@@ -1,17 +1,61 @@
 <?php
+session_start();
 include("../dbconnect/connection.php");
+
 $payment_method=[];
+$delivery_status=[];
+$sort_by=$_POST['sort_by'];
+
+$output = '';
+
 if(isset($_POST['payment_method']))
 {
     $payment_method = $_POST['payment_method'];
 }
 
-$output = '';
-
-if (!empty($payment_method))
+if(isset($_POST['delivery_status']))
 {
-    $sql = "SELECT * FROM orders WHERE payment_method IN ('" . implode("','", $payment_method) . "') order by order_date desc";
+    $delivery_status = $_POST['delivery_status'];
+}
 
+
+if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by))
+{
+    $sql = "SELECT * FROM orders WHERE 1=1 ";
+    if(!empty($payment_method))
+    {
+        $sql .= " and payment_method IN ('" . implode("','", $payment_method) . "') ";
+    }
+    if(!empty($delivery_status))
+    {
+        $sql .= " and delivery_status IN ('" . implode("','", $delivery_status) . "') ";
+    }
+
+    if($sort_by=='default')
+    {
+        $sql .= " order by order_date desc";
+    }
+    else if($sort_by=='newest first')
+    {
+        $sql .= " order by order_date desc";
+    }
+    else if($sort_by=='oldest first')
+    {
+        $sql .= " order by order_date asc";
+    }
+    else if($sort_by=='low to high')
+    {
+        $sql .= " order by total_price asc";
+    }
+    else if($sort_by=='high to low')
+    {
+        $sql .= " order by total_price desc";
+    }
+    else
+    {
+        $sql .= " order by order_date desc";
+    }
+    
         // $sql="select * from orders order by order_date desc";
         $result=mysqli_query($conn, $sql);
 

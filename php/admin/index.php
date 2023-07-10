@@ -791,23 +791,131 @@
         //***************************************************
         //      code for filter 
         //***************************************************
+
+            //code for payment method on change
             $(document).on("change", "input[name=\"payment-mode[]\"]", function(e){
-                let selected_item = [];
+                let sort_by=$('input[name="sort-by"]:checked').val();
+
+                let payment_method = [];
+                let delivery_status = [];
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
                 $('input[name="payment-mode[]"]:checked').each(function() {
-                    selected_item.push($(this).val());
+                    payment_method.push($(this).val());
                 });
 
                 $.ajax({
-                    url: 'adminFilter.php',
+                    url: 'adminSortFilterOrders.php',
                     type: 'POST',
-                    data: { payment_method: selected_item}, 
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by}, 
                     success: function(data) {
                         // console.log(data);
+                        console.log(delivery_status, payment_method);
                         $('.product-item-container').html(data);
                     }
                 });
             });
 
+            //code for delivery status on change
+            $(document).on("change", "input[name=\"delivery-status[]\"]", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+                let payment_method = [];
+                let delivery_status = [];
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'adminSortFilterOrders.php',
+                    type: 'POST',
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by}, 
+                    success: function(data) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by);
+                        $('.product-item-container').html(data);
+                    }
+                });
+            });
+
+
+        //  ****************************************************
+        //      code for sorting the orders in admin pannel
+        //  ****************************************************
+            $(document).on("change", "input[name=\"sort-by\"]", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+
+                let payment_method = [];
+                let delivery_status = [];
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'adminSortFilterOrders.php',
+                    type: 'POST',
+                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status}, 
+                    success: function(data) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by);
+
+                        $('.product-item-container').html(data);
+                    }
+                });
+            });
+
+        //  ****************************************************
+        //      code  for exporting orders in excel
+        //  ****************************************************
+        $(document).on("click", ".export-button", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+                let timestamp = new Date().getTime();
+
+                let payment_method = [];
+                let delivery_status = [];
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'adminExportOrdersInExcel.php',
+                    type: 'POST',
+                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status}, 
+                    success: function(data, status, xhr) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by);
+                        let filename = "Orders_"+timestamp+".xls"; // Specify the desired filename here
+                        let contentType = xhr.getResponseHeader('Content-Type');
+
+                        // Create a Blob from the response data
+                        let blob = new Blob([data], { type: contentType });
+
+                        // Create a temporary anchor element and download the file
+                        let link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(blob);
+                        link.download = filename;
+                        link.click();
+
+                    }
+                });
+            });
 
         //  ****************************************************
         //      from here i will write only function code
