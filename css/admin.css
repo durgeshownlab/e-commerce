@@ -78,6 +78,24 @@
     color: #fff;
 }
 
+.get-invoice-btn
+{
+    width: auto;
+    height: auto;
+    padding: 5px 20px;
+    border: 1px solid green;
+    border-radius: 5px;
+    background-color: green;
+    color: #fff;
+    cursor: pointer;
+}
+
+.get-invoice-btn:hover
+{
+    background-color: #fff;
+    color: green;
+}
+
 /* code for form and its fields  */
 
 .add-product-form,
@@ -714,7 +732,7 @@ table tr:hover
 
 /* code for filter bar  */
 
-.filter-bar-container
+.sort-filter-bar-container
 {
     width: 100%;
     height: auto        ;
@@ -723,7 +741,9 @@ table tr:hover
     padding: 5px 10px;
 }
 
-.filter-button
+.filter-button, 
+.sort-button,
+.export-button
 {
     height: 90%;
     width: fit-content;
@@ -737,37 +757,44 @@ table tr:hover
     user-select: none;
     cursor: pointer;
     position: relative;
+    margin-left: 5px;
 }
 
-.filter-button:hover
+.filter-button:hover,
+.sort-button:hover
 {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    transition: 0.2s ease-in-out;
 }
-.filter-button:hover > .filter-list-container
+.filter-button:hover > .filter-list-container,
+.sort-button:hover > .sort-list-container
 {
     display: flex;
+    transition: 0.2s ease-in-out;
 }
 
-.filter-list-container
+.filter-list-container,
+.sort-list-container
 {
-    width: 150px;
+    width: max-content;
     height: auto;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 0;
-    left: 100%;
+    top: 100%;
+    left: 0;
     z-index: 2;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 4px 10px -7px #000;
     border-radius: 5px;
+    border-top-left-radius: 0;
     color: #000000;
     cursor: default;
     display: none;
+    /* backdrop-filter: blur(25px); */
 }
 
-.filter-list
+.filter-list,
+.sort-list
 {
     width: auto;
     height: auto;
@@ -775,10 +802,19 @@ table tr:hover
     flex-direction: column;
 }
 
-.filter-list p
+.filter-list p,
+.sort-list p
 {
-    padding-left: 5px;
+    width: fit-content;
+    height: fit-content;
+    margin: 5px 0;
+    margin-left: 5px;
+    font-size: 0.9rem;
     font-weight: 500;
+    background-color: green;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 2px;
 }
 .payment-mode-filter
 {
@@ -788,9 +824,40 @@ table tr:hover
     flex-direction: column;
 }
 
-.filter-item
+.filter-item,
+.sort-item
 {
-    width: auto;
+    height: 30px;
+    width: 100%;
     display: flex;
-    padding: 3px 5px;
+    align-items: center;
+    /* padding: 6px 5px; */
+    padding: 0 5px;
+    /* border: 1px solid red; */
+    /* border-radius: 5px; */
+}
+
+.filter-item:hover,
+.sort-item:hover
+{
+    background-color: #f1f3f6;
+    /* border: 1px solid red; */
+    /* border-radius: 5px; */
+}
+
+.filter-item input,
+.sort-item input
+{
+    height: 100%;
+    cursor: pointer;
+}
+.filter-item label,
+.sort-item label
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    cursor: pointer;
 }

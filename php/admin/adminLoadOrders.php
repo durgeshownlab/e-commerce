@@ -9,10 +9,9 @@
         $result=mysqli_query($conn, $sql);
         
         $output .='
-            <div class="filter-bar-container">
-                <div class="filter-bar"></div>
+            <div class="sort-filter-bar-container">
                 <div class="filter-button">
-                    <i class="fa-solid fa-filter"></i>&nbsp;Filter
+                    <i class="fa-solid fa-sliders"></i>&nbsp;Filter
                     <div class="filter-list-container">
                         <div class="filter-list">
                             <div class="payment-mode-filter">
@@ -27,8 +26,66 @@
                                     <label for="online-filter">Online</label>
                                 </div>
                             </div>
+
+                            <div class="delivery-status-filter">
+                                <p>Delivery Status</p>
+                                <div class="filter-item">
+                                    <input type="checkbox" name="delivery-status[]" id="order-confirmed-filter" value="order confirmed">
+                                    <label for="order-confirmed-filter">Order Confirmed</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" name="delivery-status[]" id="shipped-filter" value="shipped">
+                                    <label for="shipped-filter">Shipped</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" name="delivery-status[]" id="out-for-delivery-filter" value="out for delivery">
+                                    <label for="out-for-delivery-filter">Out For Delivery</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" name="delivery-status[]" id="delivered-filter" value="delivered">
+                                    <label for="delivered-filter">Delivered</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="sort-button">
+                    <i class="fa-solid fa-sort"></i>&nbsp;Sort
+                    <div class="sort-list-container">
+                        <div class="sort-list">
+                            <p>Sort By</p>
+
+                            <div class="sort-item">
+                                <input type="radio" name="sort-by" id="default-sort" value="default" checked>
+                                <label for="default-sort">Default</label>
+                            </div>
+
+                            <div class="sort-item">
+                                <input type="radio" name="sort-by" id="newest-first-sort" value="newest first" >
+                                <label for="newest-first-sort">Newest First</label>
+                            </div>
+
+                            <div class="sort-item">
+                                <input type="radio" name="sort-by" id="oldest-first-sort" value="oldest first">
+                                <label for="oldest-first-sort">Oldest First</label>
+                            </div>
+
+                            <div class="sort-item">
+                                <input type="radio" name="sort-by" id="low-to-high-sort" value="low to high">
+                                <label for="low-to-high-sort">Price - Low to High</label>
+                            </div>
+
+                            <div class="sort-item">
+                                <input type="radio" name="sort-by" id="high-to-low-sort" value="high to low">
+                                <label for="high-to-low-sort">Price - High to Low</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-button">
+                    <i class="fa-solid fa-file-arrow-down"></i>&nbsp; Export
                 </div>
             </div>
         ';

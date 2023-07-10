@@ -30,6 +30,7 @@ $output .='
     <!-- form header  -->
     <div class="form-header">
         <div class="form-title">View Order Details</div>
+        <div class="get-invoice-btn" data-order-id="'.$_POST['order_id'].'">Get Invoice</div>
         <div class="form-close-btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
