@@ -46,6 +46,14 @@
                                     <label for="delivered-filter">Delivered</label>
                                 </div>
                             </div>
+
+                            <div class="order-status-filter">
+                                <p>Order Status</p>
+                                <div class="filter-item">
+                                    <input type="checkbox" name="order-status" id="order-status-filter" value="1">
+                                    <label for="order-status-filter">Canceled</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,6 +94,13 @@
 
                 <div class="export-button">
                     <i class="fa-solid fa-file-arrow-down"></i>&nbsp; Export
+                </div>
+
+                <div class="date-range">
+                    <label for="from">From</label>
+                    <input type="text" id="from" name="from">
+                    <label for="to">to</label>
+                    <input type="text" id="to" name="to">
                 </div>
             </div>
         ';

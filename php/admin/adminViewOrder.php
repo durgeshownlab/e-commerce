@@ -90,8 +90,10 @@ $output .='
                     <span>'.$row['payment_status'].'</span>
                 </div>
                 <div class="product-delivery-status">
-                    <p>Delivery Status </p>
-                    <select id="delivery-status">';
+                    <p>Delivery Status </p>';
+                if($row['is_canceled']==0)
+                {     
+                    $output .='<select id="delivery-status">';
 
                     if($row['delivery_status']=='order confirmed')
                     {
@@ -122,8 +124,14 @@ $output .='
                         $output .='
                             <option value='.$row['delivery_status'].'>'.$row['delivery_status'].'</option>';
                     }
+                    $output .='</select>';
+                }
+                else
+                {
+                    $output .='<p style="color: red;">Canceled</p>';
+                }
+    
     $output .='
-                    </select>
                 </div>
             </div>
 

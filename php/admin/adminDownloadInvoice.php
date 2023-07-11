@@ -6,7 +6,7 @@
 
     $order_id=$_POST['order_id'];
 
-    $sql="select * from orders where order_id='{$order_id}'";
+    $sql="select * from orders where order_id='{$order_id}' and is_deleted=0";
     $result=mysqli_query($conn, $sql);
     
     if(mysqli_num_rows($result)>0)
@@ -32,7 +32,7 @@
 
 
     // code for geting the address details from address tables
-    $sql_for_address="select * from address where address_id={$row['address_id']}";
+    $sql_for_address="select * from address where address_id={$row['address_id']} and is_deleted=0";
     $result_for_address=mysqli_query($conn, $sql_for_address);
     if(mysqli_num_rows($result_for_address)>0)
     {
@@ -86,7 +86,7 @@
     $pdf->SetFont('Arial', '', 12);
 
     // code for geting the product details from product tables
-    $sql_for_product="select * from product_table where product_id={$row['product_id']}";
+    $sql_for_product="select * from product_table where product_id={$row['product_id']} and is_deleted=0";
     $result_for_product=mysqli_query($conn, $sql_for_product);
     if(mysqli_num_rows($result_for_product)>0)
     {
