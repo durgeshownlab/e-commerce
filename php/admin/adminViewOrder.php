@@ -68,7 +68,7 @@ $output .='
                         Total Price: <span>&#8377;'.number_format($row['total_price']).'</span>
                     </div>
                 </div>
-
+                
                 
             </div>
 
