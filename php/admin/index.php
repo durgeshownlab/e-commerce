@@ -918,6 +918,28 @@
             });
 
         //  ****************************************************
+        //      code  for download the invoice in pdf format
+        //  ****************************************************
+        $(document).on("click", ".get-invoice-btn", function(e){
+            let order_id=$(this).data('order-id');
+            console.log(order_id);
+            var form = $('<form>', {
+            method: 'POST',
+            action: 'adminDownloadInvoice.php',
+            target: '_blank' // Open the PDF in a new tab/window
+            });
+
+            // Add hidden input fields for each data item
+            form.append($('<input>', {
+            type: 'hidden',
+            name: 'order_id',
+            value: order_id
+            }));
+            // Append the form to the document and submit it
+            form.appendTo(document.body).submit();
+        });
+
+        //  ****************************************************
         //      from here i will write only function code
         //  ****************************************************
 
