@@ -5,6 +5,7 @@ include("../dbconnect/connection.php");
 $payment_method=[];
 $delivery_status=[];
 $sort_by=$_POST['sort_by'];
+$order_status=$_POST['order_status'];
 
 $output = '';
 
@@ -29,6 +30,15 @@ if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by))
     if(!empty($delivery_status))
     {
         $sql .= " and delivery_status IN ('" . implode("','", $delivery_status) . "') ";
+    }
+
+    if($order_status==1)
+    {
+        $sql .= " and is_canceled=1 ";
+    }
+    else if($order_status==0)
+    {
+        $sql .= " and is_canceled=0 ";
     }
 
     if($sort_by=='default')

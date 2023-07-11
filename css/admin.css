@@ -133,10 +133,10 @@
 {
     width: 8px;
 }
+
 .add-product-form::-webkit-scrollbar-track,
 .add-category-form::-webkit-scrollbar-track
 {
-    
     width: 5px;
     border-radius: 5px;
     background-color: rgb(236, 236, 236);

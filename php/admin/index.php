@@ -33,6 +33,7 @@
     
     <!-- main css file  -->
     <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
 
@@ -74,10 +75,12 @@
     </div>
 
     <!-- javascript from here  -->
+    
     <!-- jquery ui  -->
     <script src="../../javascript/jquery-ui.min.js"></script>
     <!-- jquery ajax -->
     <script src="../../javascript/jquery.js"></script>
+
 
     <script type="text/javascript">
         $(document).ready(function(){
@@ -799,6 +802,14 @@
                 let payment_method = [];
                 let delivery_status = [];
 
+                let order_status=0;
+
+                if($('#order-status-filter').is(':checked'))
+                {
+                    order_status = 1;
+                    console.log("Checkbox value:", order_status);
+                }
+
                 $('input[name="delivery-status[]"]:checked').each(function() {
                     delivery_status.push($(this).val());
                 });
@@ -810,10 +821,10 @@
                 $.ajax({
                     url: 'adminSortFilterOrders.php',
                     type: 'POST',
-                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by}, 
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status}, 
                     success: function(data) {
                         // console.log(data);
-                        console.log(delivery_status, payment_method);
+                        console.log(delivery_status, payment_method, order_status, sort_by);
                         $('.product-item-container').html(data);
                     }
                 });
@@ -824,6 +835,13 @@
                 let sort_by=$('input[name="sort-by"]:checked').val();
                 let payment_method = [];
                 let delivery_status = [];
+                let order_status=0;
+
+                if($('#order-status-filter').is(':checked'))
+                {
+                    order_status = 1;
+                    console.log("Checkbox value:", order_status);
+                }
 
                 $('input[name="delivery-status[]"]:checked').each(function() {
                     delivery_status.push($(this).val());
@@ -836,10 +854,43 @@
                 $.ajax({
                     url: 'adminSortFilterOrders.php',
                     type: 'POST',
-                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by}, 
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status}, 
                     success: function(data) {
                         // console.log(data);
-                        console.log(delivery_status, payment_method, sort_by);
+                        console.log(delivery_status, payment_method, sort_by, order_status);
+                        $('.product-item-container').html(data);
+                    }
+                });
+            });
+
+            //code for order status on change
+            $(document).on("change", "input[name=\"order-status\"]", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+                let payment_method = [];
+                let delivery_status = [];
+                let order_status=0;
+
+                if($('#order-status-filter').is(':checked'))
+                {
+                    order_status = 1;
+                    console.log("Checkbox value:", order_status);
+                }
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'adminSortFilterOrders.php',
+                    type: 'POST',
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status}, 
+                    success: function(data) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by, order_status);
                         $('.product-item-container').html(data);
                     }
                 });
@@ -852,6 +903,14 @@
             $(document).on("change", "input[name=\"sort-by\"]", function(e){
                 let sort_by=$('input[name="sort-by"]:checked').val();
 
+                let order_status=0;
+
+                if($('#order-status-filter').is(':checked'))
+                {
+                    order_status = 1;
+                    console.log("Checkbox value:", order_status);
+                }
+
                 let payment_method = [];
                 let delivery_status = [];
 
@@ -866,10 +925,10 @@
                 $.ajax({
                     url: 'adminSortFilterOrders.php',
                     type: 'POST',
-                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status}, 
+                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status, order_status: order_status}, 
                     success: function(data) {
                         // console.log(data);
-                        console.log(delivery_status, payment_method, sort_by);
+                        console.log(delivery_status, payment_method, sort_by, order_status);
 
                         $('.product-item-container').html(data);
                     }
@@ -938,6 +997,11 @@
             // Append the form to the document and submit it
             form.appendTo(document.body).submit();
         });
+
+        //******************************************************
+        //      code for date range picker
+        //******************************************************
+
 
         //  ****************************************************
         //      from here i will write only function code
