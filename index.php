@@ -527,6 +527,43 @@
                 $("body").css("overflow", "auto");
             });
 
+            // code for order cancel button 
+            $(document).on("click", "#cancel-order-user", function(e){
+                // console.log("add clicked");
+                // $("body").css("overflow", "auto");
+                if(confirm('Do you Really want cancel order'))
+                {
+                    let order_id=$(this).data('order-id');
+                    console.log(order_id);
+                    $.ajax({
+                        url: "/e-commerce/php/cancelOrder.php",
+                        type: "POST",
+                        data: {order_id: order_id},
+                        success: function(data) {
+                            if(data==1)
+                            {
+                                console.log('order canceled');
+                                $('.user-operation-container').hide();
+                            }
+                            else if(data==0)
+                            {
+                                console.log('order could not be canceled');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+
+            });
+
+
+            //  ****************************************
+            //          function coding area 
+            //  ****************************************
+
             // function for checking whether the search bar is empty or not  
             function isSearchBarEmpty()
             {

@@ -5,7 +5,7 @@ include('dbconnect/connection.php');
 $output = '
     <div class="order-item-container">';
 
-$sql="select product_table.product_image as product_image, product_table.product_name as product_name, product_table.product_desc as product_desc, orders.quantity as quantity, orders.total_price as total_price, orders.delivery_status as delivery_status, orders.order_id as order_id from orders join product_table on orders.product_id=product_table.product_id where orders.user_id={$_SESSION['user_id']} order by orders.order_date desc";
+$sql="select product_table.product_image as product_image, product_table.product_name as product_name, product_table.product_desc as product_desc, orders.quantity as quantity, orders.total_price as total_price, orders.delivery_status as delivery_status, orders.order_id as order_id, orders.is_canceled as is_canceled, orders.order_status as order_status from orders join product_table on orders.product_id=product_table.product_id where orders.user_id={$_SESSION['user_id']} order by orders.order_date desc";
 $result = mysqli_query($conn, $sql);
 
 if(mysqli_num_rows($result)>0)
@@ -42,9 +42,34 @@ if(mysqli_num_rows($result)>0)
                     </div>
         
                     <div class="order-delivery-status-container">
-                        <div class="order-delivery-status">
-                        <i class="fa-solid fa-circle"></i>
-                        <P>'.ucwords($row['delivery_status']).'</P>
+                        <div class="order-delivery-status">';
+
+        if($row['is_canceled']== 1)
+        {
+            $output .='
+            <i class="fa-solid fa-circle" style="color: red;"></i>
+            <P style="color: red;">Order Canceled</P>';
+        }
+        else if($row['order_status']== 'pending')
+        {
+            $output .='
+            <i class="fa-solid fa-circle" style="color: #ffa000;"></i>
+            <P style="color: #ffa000;">Pending</P>';
+        }
+        else if($row['delivery_status']== 'delivered')
+        {
+            $output .='
+            <i class="fa-solid fa-circle" style="color: green;"></i>
+            <P style="color: green;">Delivered</P>';
+        }
+        else
+        {
+            $output .='
+            <i class="fa-solid fa-circle" style="color: green;"></i>
+            <P>'.ucwords($row['delivery_status']).'</P>';
+        }
+
+    $output .='
                         </div>
                     </div>
                     

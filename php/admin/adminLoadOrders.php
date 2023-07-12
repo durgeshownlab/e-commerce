@@ -98,9 +98,10 @@
 
                 <div class="date-range">
                     <label for="from">From</label>
-                    <input type="text" id="from" name="from">
+                    <input type="date" id="from" name="from">
                     <label for="to">to</label>
-                    <input type="text" id="to" name="to">
+                    <input type="date" id="to" name="to">
+                    <input type="button" value="Get" id="get-by-date-range">
                 </div>
             </div>
         ';
@@ -116,6 +117,9 @@
                         <th>
                             <p>Name</p>
                         </th>
+                        <th>
+                            <p>Order Status</p>
+                        </th> 
                         <th>
                             <p>Quantity</p>
                         </th> 
@@ -160,6 +164,27 @@
                     </td>
                     <td class="product-name">
                         <p>'.ucwords($row2['product_name']).'</p>
+                    </td>
+                    <td class="product-name">
+                        <p ';
+
+        if($row['order_status']=='pending')
+        {
+            $output .='style="color: #ffa000;"';
+        }
+        else if($row['order_status']=='confirm')
+        {
+            $output .='style="color: green;"';
+        }
+        else if($row['order_status']=='canceled')
+        {
+            $output .='style="color: red;"';
+        }
+        else
+        {
+            $output .='style="color: #000;"';
+        }        
+        $output .='>'.ucwords($row['order_status']).'</p>
                     </td>
                     <td class="quantity">
                         <p>'.$row['quantity'].'</p>

@@ -7,6 +7,12 @@ $delivery_status=[];
 $sort_by=$_POST['sort_by'];
 $order_status=$_POST['order_status'];
 
+if(isset($_POST['from_date']) && isset($_POST['to_date']))
+{
+    $from_date=$_POST['from_date'];
+    $to_date=$_POST['to_date'];
+}
+
 $output = '';
 
 if(isset($_POST['payment_method']))
@@ -20,9 +26,15 @@ if(isset($_POST['delivery_status']))
 }
 
 
-if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by))
+if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by) )
 {
     $sql = "SELECT * FROM orders WHERE 1=1 ";
+
+    if(isset($_POST['from_date']) && isset($_POST['to_date']) && !empty($from_date) && !empty($to_date))
+    {
+        $sql .= " and  (date(order_date) BETWEEN '{$from_date}' AND '{$to_date}' or DATE(order_date) BETWEEN '{$to_date}' AND '{$from_date}') ";
+    }
+
     if(!empty($payment_method))
     {
         $sql .= " and payment_method IN ('" . implode("','", $payment_method) . "') ";
@@ -80,6 +92,9 @@ if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by))
                             <p>Name</p>
                         </th>
                         <th>
+                            <p>Order Status</p>
+                        </th> 
+                        <th>
                             <p>Quantity</p>
                         </th> 
                         <th>
@@ -123,6 +138,28 @@ if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by))
                     </td>
                     <td class="product-name">
                         <p>'.ucwords($row2['product_name']).'</p>
+                    </td>
+                    <td class="quantity">
+                        <p ';
+
+        if($row['order_status']=='pending')
+        {
+            $output .='style="color: #ffa000;"';
+        }
+        else if($row['order_status']=='confirm')
+        {
+            $output .='style="color: green;"';
+        }
+        else if($row['order_status']=='canceled')
+        {
+            $output .='style="color: red;"';
+        }
+        else
+        {
+            $output .='style="color: #000;"';
+        }     
+                        
+        $output .='>'.$row['order_status'].'</p>
                     </td>
                     <td class="quantity">
                         <p>'.$row['quantity'].'</p>
