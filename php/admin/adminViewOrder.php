@@ -31,6 +31,17 @@ $output .='
     <div class="form-header">
         <div class="form-title">View Order Details</div>
         <div class="get-invoice-btn" data-order-id="'.$_POST['order_id'].'">Get Invoice</div>
+        <div class="admin-operation-container">';
+
+if($row['delivery_status'] !='delivered' && $row['is_canceled'] == 0 && $row['order_status'] == 'pending')
+{
+    $output .='<button id="cancel-order-admin" data-order-id="'.$row['order_id'].'">Cancel Order</button>';
+    $output .='<button id="confirm-order-admin" data-order-id="'.$row['order_id'].'">Confirm Order</button>';
+}
+
+
+$output .='
+        </div>
         <div class="form-close-btn">
             <i class="fa-solid fa-xmark"></i>
         </div>

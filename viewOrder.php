@@ -30,6 +30,16 @@ $output .='
     <!-- form header  -->
     <div class="form-header">
         <div class="form-title">View Order Details</div>
+        <div class="user-operation-container">';
+
+if($row['delivery_status'] !='delivered' && $row['is_canceled'] == 0)
+{
+    $output .='<button id="cancel-order-user" data-order-id="'.$row['order_id'].'">Cancel Order</button>';
+}
+        
+
+$output .='
+        </div>
         <div class="form-close-btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
@@ -89,8 +99,19 @@ $output .='
                     <span>'.$row['payment_status'].'</span>
                 </div>
                 <div class="product-delivery-status">
-                    <p>Delivery Status </p>
-                    <span>'.$row['delivery_status'].'</span>';
+                    <p>Delivery Status </p>';
+    if($row['is_canceled'] == 1)
+    {
+        $output .='<span style="color: red;">Canceled</span>';
+    }
+    else if($row['delivery_status']=='delivered')
+    {
+        $output .='<span style="color: green;">Delivered</span>';
+    }
+    else
+    {
+        $output .='<span>'.$row['delivery_status'].'</span>';
+    }
     $output .='
                 </div>
             </div>
