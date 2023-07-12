@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2023 at 12:22 PM
+-- Generation Time: Jul 12, 2023 at 03:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -83,7 +83,9 @@ INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`, `total_price
 (69, 9, 124, 1, 425, 0, '2023-07-07 09:52:21'),
 (70, 9, 125, 1, 0, 0, '2023-07-07 09:55:33'),
 (71, 9, 126, 1, 1200, 0, '2023-07-07 10:02:06'),
-(75, 9, 92, 3, 47997, 0, '2023-07-10 04:22:34');
+(78, 9, 92, 1, 15999, 0, '2023-07-12 10:14:21'),
+(79, 9, 103, 1, 290, 0, '2023-07-12 11:23:50'),
+(80, 9, 105, 3, 32997, 0, '2023-07-12 11:44:23');
 
 -- --------------------------------------------------------
 
@@ -104,8 +106,11 @@ CREATE TABLE `orders` (
   `payment_method` varchar(255) NOT NULL,
   `payment_status` varchar(255) NOT NULL,
   `delivery_status` varchar(255) NOT NULL,
+  `order_status` varchar(255) NOT NULL DEFAULT 'pending',
+  `order_event` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `order_date` datetime NOT NULL DEFAULT current_timestamp(),
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `is_canceled` tinyint(1) NOT NULL DEFAULT 0,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -113,17 +118,10 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `order_id`, `user_id`, `product_id`, `address_id`, `transaction_id`, `quantity`, `price_single_unit`, `total_price`, `payment_method`, `payment_status`, `delivery_status`, `order_date`, `is_deleted`, `timestamp`) VALUES
-(1, '168880078334d48c98', 9, 101, 21, NULL, 1, 10000, 10000, 'pod', 'pending', 'order confirmed', '2023-07-08 12:49:43', 0, '2023-07-08 07:19:43'),
-(2, '1688805546dd217557', 9, 103, 20, 'pay_MBFBl5lzd6ukay', 1, 290, 290, 'online', 'success', 'order confirmed', '2023-07-08 14:09:06', 0, '2023-07-08 08:39:06'),
-(3, '1688805546b2136c90', 9, 101, 20, 'pay_MBFBl5lzd6ukay', 1, 10000, 10000, 'online', 'success', 'delivered', '2023-07-08 14:09:06', 0, '2023-07-08 08:39:06'),
-(4, '168880653095027274', 9, 103, 21, NULL, 1, 290, 290, 'pod', 'success', 'delivered', '2023-07-08 14:25:30', 0, '2023-07-08 08:55:30'),
-(5, '1688819862045839ef', 9, 103, 21, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', '2023-07-08 18:07:42', 0, '2023-07-08 12:37:42'),
-(6, '168882062318c207db', 9, 92, 19, 'pay_MBJTSUtnkI9TTD', 2, 15999, 31998, 'online', 'success', 'delivered', '2023-07-08 18:20:38', 0, '2023-07-08 12:50:38'),
-(7, '168882075760b4f2a4', 9, 101, 21, NULL, 1, 10000, 10000, 'pod', 'success', 'delivered', '2023-07-08 18:22:37', 0, '2023-07-08 12:52:37'),
-(8, '16888208004416c5e5', 9, 103, 19, 'pay_MBJWJePBrhhXiu', 1, 290, 290, 'online', 'success', 'delivered', '2023-07-08 18:23:20', 0, '2023-07-08 12:53:20'),
-(9, '1688820800a2b7a82b', 9, 101, 19, 'pay_MBJWJePBrhhXiu', 1, 10000, 10000, 'online', 'success', 'delivered', '2023-07-08 18:23:20', 0, '2023-07-08 12:53:20'),
-(10, '168906688149f4b24b', 9, 92, 20, 'pay_MCRP4SBZTdqCRg', 3, 15999, 47997, 'online', 'success', 'order confirmed', '2023-07-11 14:45:07', 0, '2023-07-11 09:15:07');
+INSERT INTO `orders` (`id`, `order_id`, `user_id`, `product_id`, `address_id`, `transaction_id`, `quantity`, `price_single_unit`, `total_price`, `payment_method`, `payment_status`, `delivery_status`, `order_status`, `order_event`, `order_date`, `is_deleted`, `is_canceled`, `timestamp`) VALUES
+(1, '16891653597361e5a5', 9, 92, 21, NULL, 1, 15999, 15999, 'pod', 'pending', 'order confirmed', 'confirm', NULL, '2023-07-12 18:05:59', 0, 0, '2023-07-12 12:35:59'),
+(2, '16891653597740671c', 9, 103, 21, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'pending', NULL, '2023-07-12 18:05:59', 0, 0, '2023-07-12 12:35:59'),
+(3, '1689165359aecd904d', 9, 105, 21, NULL, 3, 10999, 32997, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-12 18:05:59', 0, 1, '2023-07-12 12:35:59');
 
 -- --------------------------------------------------------
 
@@ -353,7 +351,9 @@ INSERT INTO `wishlists` (`wishlist_id`, `user_id`, `product_id`, `is_deleted`, `
 (159, 9, 123, 0, '2023-07-07 09:44:51'),
 (160, 9, 124, 0, '2023-07-07 09:52:18'),
 (161, 9, 125, 0, '2023-07-07 09:55:34'),
-(171, 9, 92, 0, '2023-07-10 04:22:36');
+(171, 9, 92, 0, '2023-07-10 04:22:36'),
+(172, 9, 101, 0, '2023-07-12 10:13:26'),
+(173, 9, 103, 0, '2023-07-12 10:13:30');
 
 --
 -- Indexes for dumped tables
@@ -446,13 +446,13 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -494,7 +494,7 @@ ALTER TABLE `user_table`
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- Constraints for dumped tables
