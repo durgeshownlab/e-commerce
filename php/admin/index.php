@@ -764,31 +764,42 @@
             });
 
             // code for updating the delivery status 
-            $(document).on("change", "#delivery-status", function(e){
-                let delivery_status=$('#delivery-status').val();
-                let order_id=$('[name="order-id"]').val();
-                console.log(delivery_status+"........."+order_id);
-
-                $.ajax({
-                    url: "adminUpdateDeliveryStatus.php",
-                    type: "POST",
-                    data: {order_id: order_id, delivery_status: delivery_status},
-                    success: function(data){
-                        if(data==1)
-                        {
-                            console.log('order status changed to ', delivery_status);
-                            loadOrders();
-                        }
-                        else if(data==0)
-                        {
-                            console.log('failed to changed');
-                        }
-                        else
-                        {
-                            console.log(data);
-                        }
+            $(document).on("click", "#update-delivery-status-btn", function(e){
+                e.preventDefault();
+                if(confirm('Do you realy want to update'))
+                {
+                    let delivery_status=$('#delivery-status').val();
+                    let order_id=$('[name="order-id"]').val();
+                    console.log(delivery_status+"........."+order_id);
+                    if(delivery_status=='')
+                    {  
+                        alert("Sorry, can't revert the status");
                     }
-                });
+                    else
+                    {
+                        $.ajax({
+                            url: "adminUpdateDeliveryStatus.php",
+                            type: "POST",
+                            data: {order_id: order_id, delivery_status: delivery_status},
+                            success: function(data){
+                                if(data==1)
+                                {
+                                    loadOrders();
+                                    console.log('order status changed to ', delivery_status);
+                                    closeForm();
+                                }
+                                else if(data==0)
+                                {
+                                    console.log('failed to changed');
+                                }
+                                else
+                                {
+                                    console.log(data);
+                                }
+                            }
+                        });
+                    }
+                }
             });
 
             //code for reloading the orders
@@ -1131,8 +1142,10 @@
                     success: function(data) {
                         if(data==1)
                         {
+                            loadOrders();
                             console.log('order canceled');
                             $('.admin-operation-container').hide();
+                            closeForm();
                         }
                         else if(data==0)
                         {
@@ -1160,12 +1173,14 @@
                     success: function(data) {
                         if(data==1)
                         {
-                            console.log('order canceled');
+                            loadOrders();
+                            console.log('order confirmed');
                             $('.admin-operation-container').hide();
+                            closeForm();
                         }
                         else if(data==0)
                         {
-                            console.log('order could not be canceled');
+                            console.log('order could not be confirmed');
                         }
                         else
                         {
@@ -1250,6 +1265,14 @@
                         $(".middle").html(data);
                     }
                 });
+            }
+
+            //load orders table
+            function closeForm()
+            {
+                $(".form-container").remove();
+                $(".add-product-form-container").css("display", "none");
+                $("body").css("overflow", "auto");
             }
 
 

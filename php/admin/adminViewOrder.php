@@ -103,39 +103,44 @@ $output .='
                 <div class="product-delivery-status">
                     <p>Delivery Status </p>';
                 if($row['is_canceled']==0)
-                {     
-                    $output .='<select id="delivery-status">';
-
-                    if($row['delivery_status']=='order confirmed')
+                {
+                    if($row['order_status']!='pending')     
                     {
-                        $output .='
-                            <option value='.$row['delivery_status'].'>'.$row['delivery_status'].'</option>
-                            <option value="shipped">Shipped</option>
-                            <option value="out for delivery">Out For Delivery</option>
-                            <option value="delivered">Delivered</option>';
+                        if($row['delivery_status']!='delivered')
+                        {
+                            $output .='<select id="delivery-status">';
+        
+                            if($row['delivery_status']=='order confirmed')
+                            {
+                                $output .='
+                                    <option value="">'.$row['delivery_status'].'</option>
+                                    <option value="shipped">Shipped</option>';
+                            }
+                            else if($row['delivery_status']=='shipped')
+                            {
+                                $output .='
+                                    <option value="">'.$row['delivery_status'].'</option>
+                                    <option value="out for delivery">Out For Delivery</option>';
+                            }
+                            else if($row['delivery_status']=='out for delivery')
+                            {
+                                $output .='
+                                    <option value="">'.$row['delivery_status'].'</option>
+                                    <option value="delivered">Delivered</option>';
+                            }
+                            $output .='</select> 
+                                <button id="update-delivery-status-btn">Update</button>            
+                            ';
+                        }
+                        else
+                        {
+                            $output .='<p style="color: green;">Delivered</p>';
+                        }
                     }
-                    else if($row['delivery_status']=='shipped')
+                    else
                     {
-                        $output .='
-                            <option value='.$row['delivery_status'].'>'.$row['delivery_status'].'</option>
-                            <option value="order confirmed">Order Confirmed</option>
-                            <option value="out for delivery">Out For Delivery</option>
-                            <option value="delivered">Delivered</option>';
+                        $output .='<p style="color: #ffa000;">Pending</p>';
                     }
-                    else if($row['delivery_status']=='out for delivery')
-                    {
-                        $output .='
-                            <option value='.$row['delivery_status'].'>'.$row['delivery_status'].'</option>
-                            <option value="order confirmed">Order Confirmed</option>
-                            <option value="shipped">Shipped</option>
-                            <option value="delivered">Delivered</option>';
-                    }
-                    else if($row['delivery_status']=='delivered')
-                    {
-                        $output .='
-                            <option value='.$row['delivery_status'].'>'.$row['delivery_status'].'</option>';
-                    }
-                    $output .='</select>';
                 }
                 else
                 {
@@ -171,8 +176,29 @@ $output .='
             </div>
         </div>
 
-        
     </form>
+
+    <div class="delivery-status-event-container">
+        <div class="delivery-status-event">
+            <div class="delivery-status-order-confirmed">
+                <div class="delivery-status-text">
+                    <span>Order Confirmed</span>
+                </div>
+                <div class="delivery-status-date-time">
+                    <span>2023-07-12 18:05:59</span>
+                </div>
+            </div>
+            <div class="delivery-status-order-confirmed">
+                <div class="delivery-status-text">
+                    <span>Shipped</span>
+                </div>
+                <div class="delivery-status-date-time">
+                    <span>2023-07-12 18:05:59</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </div>
 
 ';
