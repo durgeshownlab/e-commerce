@@ -111,8 +111,28 @@
     font-weight: 400;
     color: #2c2c2c;
     padding-right: 5px;
-    
 }
+
+
+input[type="search"]::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    border-radius: 50em;
+    background: url('../img/icon/cross-circle.png') no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button{
+    color: #23b3cc;
+    opacity: .7 ;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+
 
 .live-search-result-container
 {

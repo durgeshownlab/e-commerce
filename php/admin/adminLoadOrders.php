@@ -103,6 +103,14 @@
                     <input type="date" id="to" name="to">
                     <input type="button" value="Get" id="get-by-date-range">
                 </div>
+
+                <!-- search bar  -->
+                <div class="search-bar">
+                    <input type="search" name="search" id="search" placeholder="Search for Order Id, Transaction Id and More">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
             </div>
         ';
 

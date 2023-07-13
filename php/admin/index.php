@@ -35,7 +35,9 @@
     <link rel="stylesheet" href="../../css/admin.css">
     <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> -->
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 </head>
 <body>
 
@@ -1069,6 +1071,52 @@
                 });
             }
         });
+
+
+        //code for search bar in admin pannel
+        $(document).on("keyup", "#search", function(e){
+            let search_data=$('#search').val();
+            console.log('search for ', search_data);
+            $.ajax({
+                url: "adminSearchOrder.php",
+                type: "POST",
+                data: {search_data: search_data},
+                success: function(data) {
+                    $('.product-item-container').html(data);
+                    console.log('search for ', search_data);
+                }
+            });
+        });
+
+        $(document).on("click", ".search-btn", function(e){
+            let search_data=$('#search').val();
+            console.log('search for ', search_data);
+            $.ajax({
+                url: "adminSearchOrder.php",
+                type: "POST",
+                data: {search_data: search_data},
+                success: function(data) {
+                    $('.product-item-container').html(data);
+                    console.log('search for ', search_data);
+                }
+            });
+        });
+
+        $(document).on("search", "#search", function(e){
+            let search_data=$('#search').val();
+            console.log('search for ', search_data);
+            $.ajax({
+                url: "adminSearchOrder.php",
+                type: "POST",
+                data: {search_data: search_data},
+                success: function(data) {
+                    $('.product-item-container').html(data);
+                    console.log('search for ', search_data);
+                }
+            });
+        });
+        
+
 
         // code for confirming order as admin 
         $(document).on("click", "#cancel-order-admin", function(e){
