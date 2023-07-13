@@ -1,6 +1,6 @@
 ## e-commerce
 
-**this is ecomerce website made by me**
+**this is ecomerce**
 --
 images
 
