@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2023 at 03:07 PM
+-- Generation Time: Jul 13, 2023 at 02:59 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -83,9 +83,10 @@ INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`, `total_price
 (69, 9, 124, 1, 425, 0, '2023-07-07 09:52:21'),
 (70, 9, 125, 1, 0, 0, '2023-07-07 09:55:33'),
 (71, 9, 126, 1, 1200, 0, '2023-07-07 10:02:06'),
-(78, 9, 92, 1, 15999, 0, '2023-07-12 10:14:21'),
-(79, 9, 103, 1, 290, 0, '2023-07-12 11:23:50'),
-(80, 9, 105, 3, 32997, 0, '2023-07-12 11:44:23');
+(80, 9, 105, 1, 10999, 0, '2023-07-12 11:44:23'),
+(81, 9, 103, 1, 290, 0, '2023-07-13 12:34:38'),
+(82, 9, 92, 1, 15999, 0, '2023-07-13 12:34:49'),
+(83, 9, 101, 1, 10000, 0, '2023-07-13 12:34:55');
 
 -- --------------------------------------------------------
 
@@ -119,9 +120,17 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_id`, `user_id`, `product_id`, `address_id`, `transaction_id`, `quantity`, `price_single_unit`, `total_price`, `payment_method`, `payment_status`, `delivery_status`, `order_status`, `order_event`, `order_date`, `is_deleted`, `is_canceled`, `timestamp`) VALUES
-(1, '16891653597361e5a5', 9, 92, 21, NULL, 1, 15999, 15999, 'pod', 'pending', 'order confirmed', 'confirm', NULL, '2023-07-12 18:05:59', 0, 0, '2023-07-12 12:35:59'),
-(2, '16891653597740671c', 9, 103, 21, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'pending', NULL, '2023-07-12 18:05:59', 0, 0, '2023-07-12 12:35:59'),
-(3, '1689165359aecd904d', 9, 105, 21, NULL, 3, 10999, 32997, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-12 18:05:59', 0, 1, '2023-07-12 12:35:59');
+(1, '1689247230b323f5a5', 9, 103, 21, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"13:27:55\"}]', '2023-07-13 16:50:30', 0, 1, '2023-07-13 11:20:30'),
+(2, '16892472301e2c7905', 9, 105, 21, NULL, 3, 10999, 32997, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-13 16:50:30', 0, 1, '2023-07-13 11:20:30'),
+(3, '168924725968f6a463', 9, 103, 20, 'pay_MDGcNAJWwDSiJL', 1, 290, 290, 'online', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"13:21:15\"}]', '2023-07-13 16:50:59', 0, 0, '2023-07-13 11:20:59'),
+(4, '1689247259a59a9f0b', 9, 105, 20, 'pay_MDGcNAJWwDSiJL', 3, 10999, 32997, 'online', 'success', 'order confirmed', 'canceled', NULL, '2023-07-13 16:50:59', 0, 1, '2023-07-13 11:20:59'),
+(5, '16892497031c161852', 9, 105, 20, NULL, 3, 10999, 32997, 'pod', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"14:02:01\"}]', '2023-07-13 17:31:43', 0, 0, '2023-07-13 12:01:43'),
+(6, '16892509368d23aa6c', 9, 105, 20, NULL, 2, 10999, 21998, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-13 17:52:16', 0, 1, '2023-07-13 12:22:16'),
+(7, '1689251424fb83da67', 9, 105, 20, 'pay_MDHngloDlYcwkb', 2, 10999, 21998, 'online', 'success', 'order confirmed', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"14:31:22\"}]', '2023-07-13 18:00:24', 0, 0, '2023-07-13 12:30:24'),
+(8, '16892517066680fa7a', 9, 105, 21, NULL, 1, 10999, 10999, 'pod', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"14:35:42\"}]', '2023-07-13 18:05:06', 0, 0, '2023-07-13 12:35:06'),
+(9, '16892517066a8eb900', 9, 103, 21, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"14:45:58\"}]', '2023-07-13 18:05:06', 0, 0, '2023-07-13 12:35:06'),
+(10, '1689251706e98de5b0', 9, 92, 21, NULL, 1, 15999, 15999, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-13 18:05:06', 0, 1, '2023-07-13 12:35:06'),
+(11, '1689251706d680d292', 9, 101, 21, NULL, 1, 10000, 10000, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-13 18:05:06', 0, 1, '2023-07-13 12:35:06');
 
 -- --------------------------------------------------------
 
@@ -352,8 +361,7 @@ INSERT INTO `wishlists` (`wishlist_id`, `user_id`, `product_id`, `is_deleted`, `
 (160, 9, 124, 0, '2023-07-07 09:52:18'),
 (161, 9, 125, 0, '2023-07-07 09:55:34'),
 (171, 9, 92, 0, '2023-07-10 04:22:36'),
-(172, 9, 101, 0, '2023-07-12 10:13:26'),
-(173, 9, 103, 0, '2023-07-12 10:13:30');
+(172, 9, 101, 0, '2023-07-12 10:13:26');
 
 --
 -- Indexes for dumped tables
@@ -446,13 +454,13 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product_category`

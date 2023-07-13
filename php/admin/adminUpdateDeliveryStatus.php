@@ -5,6 +5,17 @@
     $order_id=$_POST['order_id'];
     $delivery_status=$_POST['delivery_status'];
 
+    $order_event_data = [
+        [
+          'event_name' => 'order placed',
+          'Date' => date('d-m-Y'),
+          'Time' => date('H:i:s')
+        ]
+    ];
+
+    $json_order_event_data = json_encode($order_event_data);
+      
+
     $sql="select payment_method from orders where order_id='{$order_id}' and is_deleted=0";
     $result=mysqli_query($conn, $sql);
     if(mysqli_num_rows($result)>0)

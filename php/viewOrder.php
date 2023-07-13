@@ -104,6 +104,10 @@ $output .='
     {
         $output .='<span style="color: red;">Canceled</span>';
     }
+    else if($row['order_status'] == 'pending')
+    {
+        $output .='<span style="color: #ffa000;">Pending</span>';
+    }
     else if($row['delivery_status']=='delivered')
     {
         $output .='<span style="color: green;">Delivered</span>';
