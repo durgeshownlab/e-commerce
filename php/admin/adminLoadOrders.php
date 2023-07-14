@@ -157,7 +157,14 @@
                 
                 $output .='
                 <tr data-order-id="'.$row['order_id'].'"';
+                
                 if($row['delivery_status']=='delivered')
+                {
+                    $output .='
+                        style="background-color: #1faf1f; color: #fff;"
+                    ';
+                }
+                else if($row['is_canceled']==1)
                 {
                     $output .='
                         style="background-color: red; color: #fff;"
@@ -180,22 +187,10 @@
         {
             $output .='style="color: #ffa000;"';
         }
-        else if($row['order_status']=='confirm')
-        {
-            $output .='style="color: #fff;"';
-        }
-        else if($row['delivery_status']=='delivered')
-        {
-            $output .='style="color: green;"';
-        }
         else if($row['order_status']=='canceled')
         {
-            $output .='style="color: red;"';
-        }
-        else
-        {
-            $output .='style="color: #000;"';
-        }        
+            $output .='style="color: #fff;"';
+        }   
         $output .='>';
         
         if($row['delivery_status']=='delivered')

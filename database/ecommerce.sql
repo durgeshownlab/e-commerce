@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2023 at 09:59 AM
+-- Generation Time: Jul 14, 2023 at 11:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -120,29 +120,14 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_id`, `user_id`, `product_id`, `address_id`, `transaction_id`, `quantity`, `price_single_unit`, `total_price`, `payment_method`, `payment_status`, `delivery_status`, `order_status`, `order_event`, `order_date`, `is_deleted`, `is_canceled`, `timestamp`) VALUES
-(1, '1689247230b323f5a5', 9, 103, 21, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"13:27:55\"}]', '2023-07-13 16:50:30', 0, 1, '2023-07-13 11:20:30'),
-(2, '16892472301e2c7905', 9, 105, 21, NULL, 3, 10999, 32997, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-13 16:50:30', 0, 1, '2023-07-13 11:20:30'),
-(3, '168924725968f6a463', 9, 103, 20, 'pay_MDGcNAJWwDSiJL', 1, 290, 290, 'online', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"13:21:15\"}]', '2023-07-13 16:50:59', 0, 0, '2023-07-13 11:20:59'),
-(4, '1689247259a59a9f0b', 9, 105, 20, 'pay_MDGcNAJWwDSiJL', 3, 10999, 32997, 'online', 'success', 'order confirmed', 'canceled', NULL, '2023-07-13 16:50:59', 0, 1, '2023-07-13 11:20:59'),
-(5, '16892497031c161852', 9, 105, 20, NULL, 3, 10999, 32997, 'pod', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"14:02:01\"}]', '2023-07-13 17:31:43', 0, 0, '2023-07-13 12:01:43'),
-(6, '16892509368d23aa6c', 9, 105, 20, NULL, 2, 10999, 21998, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-13 17:52:16', 0, 1, '2023-07-13 12:22:16'),
-(7, '1689251424fb83da67', 9, 105, 20, 'pay_MDHngloDlYcwkb', 2, 10999, 21998, 'online', 'success', 'order confirmed', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"14:31:22\"}]', '2023-07-13 18:00:24', 0, 0, '2023-07-13 12:30:24'),
-(8, '16892517066680fa7a', 9, 105, 21, NULL, 1, 10999, 10999, 'pod', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"14:35:42\"}]', '2023-07-13 18:05:06', 0, 0, '2023-07-13 12:35:06'),
-(9, '16892517066a8eb900', 9, 103, 21, NULL, 1, 290, 290, 'pod', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"13-07-2023\",\"Time\":\"14:45:58\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"11:59:44\"},{\"event_name\":\"out for delivery\",\"Date\":\"14-07-2023\",\"Time\":\"12:00:10\"},{\"event_name\":\"delivered\",\"Date\":\"14-07-2023\",\"Time\":\"12:00:29\"}]', '2023-07-13 18:05:06', 0, 0, '2023-07-13 12:35:06'),
-(10, '1689251706e98de5b0', 9, 92, 21, NULL, 1, 15999, 15999, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-13 18:05:06', 0, 1, '2023-07-13 12:35:06'),
-(11, '1689251706d680d292', 9, 101, 21, NULL, 1, 10000, 10000, 'pod', 'pending', 'order confirmed', 'canceled', NULL, '2023-07-13 18:05:06', 0, 1, '2023-07-13 12:35:06'),
-(12, '16893114604f1303ae', 9, 105, 20, NULL, 1, 10999, 10999, 'pod', 'pending', 'out for delivery', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"07:11:00\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"07:39:51\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"07:39:59\"},{\"event_name\":\"out for delivery\",\"Date\":\"14-07-2023\",\"Time\":\"07:40:31\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"07:40:43\"}]', '2023-07-14 10:41:00', 0, 1, '2023-07-14 05:11:00'),
-(13, '1689311461e4b379a3', 9, 103, 20, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"07:11:01\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"07:12:34\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"07:23:02\"}]', '2023-07-14 10:41:01', 0, 1, '2023-07-14 05:11:01'),
-(14, '1689311461d49ad77e', 9, 92, 20, NULL, 1, 15999, 15999, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"07:11:01\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"07:26:23\"}]', '2023-07-14 10:41:01', 0, 1, '2023-07-14 05:11:01'),
-(15, '1689311461f4bb0929', 9, 101, 20, NULL, 1, 10000, 10000, 'pod', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"07:11:01\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"07:35:57\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"07:36:29\"},{\"event_name\":\"out for delivery\",\"Date\":\"14-07-2023\",\"Time\":\"07:37:18\"},{\"event_name\":\"delivered\",\"Date\":\"14-07-2023\",\"Time\":\"07:38:06\"}]', '2023-07-14 10:41:01', 0, 0, '2023-07-14 05:11:01'),
-(16, '1689313504043f4378', 9, 105, 20, NULL, 1, 10999, 10999, 'pod', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"07:45:04\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"11:15:40\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"11:40:23\"},{\"event_name\":\"out for delivery\",\"Date\":\"14-07-2023\",\"Time\":\"11:40:32\"},{\"event_name\":\"delivered\",\"Date\":\"14-07-2023\",\"Time\":\"11:40:51\"}]', '2023-07-14 11:15:04', 0, 0, '2023-07-14 05:45:04'),
-(17, '1689313504f468b98f', 9, 103, 20, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"07:45:04\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"11:41:47\"}]', '2023-07-14 11:15:04', 0, 1, '2023-07-14 05:45:04'),
-(18, '168931350487a1d59e', 9, 92, 20, NULL, 1, 15999, 15999, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"07:45:04\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"11:55:25\"}]', '2023-07-14 11:15:04', 0, 1, '2023-07-14 05:45:04'),
-(19, '16893135046f8c7243', 9, 101, 20, NULL, 1, 10000, 10000, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"07:45:04\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"11:58:14\"}]', '2023-07-14 11:15:04', 0, 1, '2023-07-14 05:45:04'),
-(20, '1689316288d8488db1', 9, 105, 20, 'pay_MDaDgNPCfGX9bS', 1, 10999, 10999, 'online', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"12:01:28\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"12:02:04\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"12:02:13\"},{\"event_name\":\"out for delivery\",\"Date\":\"14-07-2023\",\"Time\":\"12:02:22\"},{\"event_name\":\"delivered\",\"Date\":\"14-07-2023\",\"Time\":\"12:02:30\"}]', '2023-07-14 12:01:28', 0, 0, '2023-07-14 06:31:28'),
-(21, '16893162888a1b6f11', 9, 103, 20, 'pay_MDaDgNPCfGX9bS', 1, 290, 290, 'online', 'success', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"12:01:28\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"12:03:03\"}]', '2023-07-14 12:01:28', 0, 1, '2023-07-14 06:31:28'),
-(22, '16893162887cbe4249', 9, 92, 20, 'pay_MDaDgNPCfGX9bS', 1, 15999, 15999, 'online', 'success', 'shipped', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"12:01:28\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"12:03:22\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"12:03:31\"}]', '2023-07-14 12:01:28', 0, 0, '2023-07-14 06:31:28'),
-(23, '1689316288ef09e27a', 9, 101, 20, 'pay_MDaDgNPCfGX9bS', 1, 10000, 10000, 'online', 'success', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"12:01:28\"}]', '2023-07-14 12:01:28', 0, 0, '2023-07-14 06:31:28');
+(1, '1689327243ee63ec41', 9, 105, 20, NULL, 1, 10999, 10999, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:50\"}]', '2023-07-14 15:04:03', 0, 1, '2023-07-14 09:34:03'),
+(2, '16893272432a3ac261', 9, 103, 20, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:56\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
+(3, '1689327243511811f1', 9, 92, 20, NULL, 1, 15999, 15999, 'pod', 'pending', 'order confirmed', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:10:48\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
+(4, '1689327243b346f573', 9, 101, 20, NULL, 1, 10000, 10000, 'pod', 'pending', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
+(5, '168932728077f459e2', 9, 105, 20, 'pay_MDdLAMgiRLNsYw', 1, 10999, 10999, 'online', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:39\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:49\"},{\"event_name\":\"out for delivery\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:58\"},{\"event_name\":\"delivered\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:38\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40'),
+(6, '1689327280e34c480a', 9, 103, 20, 'pay_MDdLAMgiRLNsYw', 1, 290, 290, 'online', 'success', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40'),
+(7, '1689327280c7e4cc55', 9, 92, 20, 'pay_MDdLAMgiRLNsYw', 1, 15999, 15999, 'online', 'success', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40'),
+(8, '1689327280b6dd889c', 9, 101, 20, 'pay_MDdLAMgiRLNsYw', 1, 10000, 10000, 'online', 'success', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40');
 
 -- --------------------------------------------------------
 
@@ -472,7 +457,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product_category`
