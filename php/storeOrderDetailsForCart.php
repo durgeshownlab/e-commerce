@@ -46,7 +46,20 @@ if($_POST['payment_mode']=='online')
     {
         $custom_order_id= time().'' . bin2hex(random_bytes(4));
 
-        $sql="INSERT INTO orders (order_id, user_id, product_id, address_id, transaction_id, quantity, price_single_unit, total_price, payment_method, payment_status, delivery_status) VALUES ('{$custom_order_id}', {$user_id}, {$productDetails[$i]['product_id']}, {$address_id}, '{$razorpay_payment_id}', {$productDetails[$i]['quantity']}, {$productDetails[$i]['price_single_unit']}, {$productDetails[$i]['total_price']}, '{$payment_method}', '{$payment_status}', '{$delivery_status}')";
+         // code for order  event start from the order placed
+        date_default_timezone_set("Asia/kolkata");
+
+         $order_event_data = [
+            [
+              'event_name' => 'order placed',
+              'Date' => date('d-m-Y'),
+              'Time' => date('H:i:s')
+            ]
+        ];
+    
+        $json_order_event_data = json_encode($order_event_data);
+
+        $sql="INSERT INTO orders (order_id, user_id, product_id, address_id, transaction_id, quantity, price_single_unit, total_price, payment_method, payment_status, delivery_status, order_event) VALUES ('{$custom_order_id}', {$user_id}, {$productDetails[$i]['product_id']}, {$address_id}, '{$razorpay_payment_id}', {$productDetails[$i]['quantity']}, {$productDetails[$i]['price_single_unit']}, {$productDetails[$i]['total_price']}, '{$payment_method}', '{$payment_status}', '{$delivery_status}', '{$json_order_event_data}')";
     
         $result=mysqli_query($conn, $sql);
         if($result)
@@ -203,7 +216,21 @@ else if($_POST['payment_mode']=='pod')
     {
         $custom_order_id = time().'' . bin2hex(random_bytes(4));
 
-        $sql="INSERT INTO orders (order_id, user_id, product_id, address_id, quantity, price_single_unit, total_price, payment_method, payment_status, delivery_status) VALUES ('{$custom_order_id}', {$user_id}, {$productDetails[$i]['product_id']}, {$address_id}, {$productDetails[$i]['quantity']}, {$productDetails[$i]['price_single_unit']}, {$productDetails[$i]['total_price']}, '{$payment_method}', '{$payment_status}', '{$delivery_status}')";
+         // code for order  event start from the order placed
+
+        date_default_timezone_set("Asia/kolkata");
+
+         $order_event_data = [
+            [
+              'event_name' => 'order placed',
+              'Date' => date('d-m-Y'),
+              'Time' => date('H:i:s')
+            ]
+        ];
+    
+        $json_order_event_data = json_encode($order_event_data);
+
+        $sql="INSERT INTO orders (order_id, user_id, product_id, address_id, quantity, price_single_unit, total_price, payment_method, payment_status, delivery_status, order_event) VALUES ('{$custom_order_id}', {$user_id}, {$productDetails[$i]['product_id']}, {$address_id}, {$productDetails[$i]['quantity']}, {$productDetails[$i]['price_single_unit']}, {$productDetails[$i]['total_price']}, '{$payment_method}', '{$payment_status}', '{$delivery_status}', '{$json_order_event_data}')";
     
         $result=mysqli_query($conn, $sql);
         if($result)

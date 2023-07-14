@@ -1267,7 +1267,7 @@
                 });
             }
 
-            //load orders table
+            //function for closing the form
             function closeForm()
             {
                 $(".form-container").remove();

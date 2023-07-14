@@ -182,6 +182,10 @@
         }
         else if($row['order_status']=='confirm')
         {
+            $output .='style="color: #fff;"';
+        }
+        else if($row['delivery_status']=='delivered')
+        {
             $output .='style="color: green;"';
         }
         else if($row['order_status']=='canceled')
@@ -192,7 +196,18 @@
         {
             $output .='style="color: #000;"';
         }        
-        $output .='>'.ucwords($row['order_status']).'</p>
+        $output .='>';
+        
+        if($row['delivery_status']=='delivered')
+        {
+            $output .=''.ucwords($row['delivery_status']).'';
+        }
+        else
+        {
+            $output .= ''.ucwords($row['order_status']).'';
+        }
+        
+        $output .='</p>
                     </td>
                     <td class="quantity">
                         <p>'.$row['quantity'].'</p>

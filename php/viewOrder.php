@@ -148,6 +148,43 @@ $output .='
 
         
     </form>
+
+    <div class="delivery-status-event-container">
+        <div class="delivery-status-event">';
+    
+    $order_event=json_decode($row['order_event'], true);
+
+    for($i=0; $i<count($order_event); $i++)
+    {
+        if($order_event[$i]['event_name']!='order canceled')
+        {
+            $output .='
+            <div class="delivery-status-order-confirmed">
+                <div class="delivery-status-text">
+                    <span>'.$order_event[$i]['event_name'].'</span>
+                </div>
+                <div class="delivery-status-date-time">
+                    <span>'.$order_event[$i]['Date'].' '.$order_event[$i]['Time'].'</span>
+                </div>
+            </div>';
+        }   
+        else
+        {
+            $output .='
+            <div class="delivery-status-order-canceled">
+                <div class="delivery-status-text">
+                    <span>'.$order_event[$i]['event_name'].'</span>
+                </div>
+                <div class="delivery-status-date-time">
+                    <span>'.$order_event[$i]['Date'].' '.$order_event[$i]['Time'].'</span>
+                </div>
+            </div>';
+        }
+    }
+
+    $output .='
+        </div>
+    </div>
 </div>
 
 ';
