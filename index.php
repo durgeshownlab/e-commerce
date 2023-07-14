@@ -542,12 +542,16 @@
                         success: function(data) {
                             if(data==1)
                             {
+                                loadOrders();
                                 console.log('order canceled');
                                 $('.user-operation-container').hide();
+                                closeForm();
+
                             }
                             else if(data==0)
                             {
                                 console.log('order could not be canceled');
+                                closeForm();
                             }
                             else
                             {
@@ -656,6 +660,14 @@
                         $(".product-item-container").html(data);
                     }
                 });
+            }
+
+            //function for closing the form
+            function closeForm()
+            {
+                $(".form-container").remove();
+                $(".add-product-form-container").css("display", "none");
+                $("body").css("overflow", "auto");
             }
 
             // call when click on any product 

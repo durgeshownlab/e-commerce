@@ -798,6 +798,162 @@ input[type="search"]:focus::-webkit-search-cancel-button{
     padding-top: 5px;
 }
 
+
+/* code for delivery status event in card  */
+.delivery-status-event-container
+{
+    width: 100%;
+    height: 75px;
+    background-color: #fff;
+    border-top: 1px solid #bcbcbc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-status-event
+{
+    width: fit-content;
+    height: 75px;
+    /* border: 1px solid rgb(25, 0, 255); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-status-order-confirmed
+{
+    width: 200px;
+    height: 3px;
+    background-color: #26a541;
+    display: flex;
+    position: relative;
+}
+
+.delivery-status-order-canceled
+{
+    width: 200px;
+    height: 3px;
+    background-color: red;
+    display: flex;
+    position: relative;
+}
+
+.delivery-status-order-confirmed::before
+{
+    content: '';
+    width: 15px;
+    /* height: 25px; */
+    aspect-ratio: 1/1;
+    background-color: #26a541;
+    border-radius: 50px;
+
+    position: absolute;
+    left: 0%;
+    top: -200%;
+}
+
+.delivery-status-order-canceled::before
+{
+    content: '';
+    width: 15px;
+    /* height: 25px; */
+    aspect-ratio: 1/1;
+    background-color: red;
+    border-radius: 50px;
+
+    position: absolute;
+    left: 0%;
+    top: -200%;
+}
+
+.delivery-status-order-confirmed:last-child
+{
+    width: 0px;
+    height: 3px;
+    background-color: #26a541;
+    display: flex;
+    position: relative;
+}
+
+.delivery-status-order-canceled:last-child
+{
+    width: 0px;
+    height: 3px;
+    background-color: red;
+    display: flex;
+    position: relative;
+}
+
+
+
+.delivery-status-text
+{
+    width: 200px;
+    position: absolute;
+    top: -806%;
+    left: -50%;
+    font-size: 14px;
+    text-align: center;
+}
+
+.delivery-status-date-time
+{
+    width: 200px;
+    position: absolute;
+    bottom: -806%;
+    left: -50%;
+    font-size: 14px;
+    text-align: center;
+}
+
+.delivery-status-order-confirmed:last-child > .delivery-status-text
+{
+    width: 200px;
+    position: absolute;
+    top: -806%;
+    left: -50%;
+    font-size: 14px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.delivery-status-order-confirmed:last-child > .delivery-status-date-time
+{
+    width: 200px;
+    position: absolute;
+    bottom: -806%;
+    left: -50%;
+    font-size: 14px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.delivery-status-order-canceled:last-child > .delivery-status-text
+{
+    width: 200px;
+    color: red;
+    position: absolute;
+    top: -806%;
+    left: -50%;
+    font-size: 14px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.delivery-status-order-canceled:last-child > .delivery-status-date-time
+{
+    width: 200px;
+    color: red;
+    position: absolute;
+    bottom: -806%;
+    left: -50%;
+    font-size: 14px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+
 /* code for cart section  */
 .cart-container
 {

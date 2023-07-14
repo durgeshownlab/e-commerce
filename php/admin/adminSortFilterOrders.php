@@ -146,6 +146,10 @@ if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by) )
         {
             $output .='style="color: #ffa000;"';
         }
+        else if($row['delivery_status']=='delivered')
+        {
+            $output .='style="color: #fff;"';
+        }
         else if($row['order_status']=='confirm')
         {
             $output .='style="color: green;"';
@@ -159,7 +163,18 @@ if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by) )
             $output .='style="color: #000;"';
         }     
                         
-        $output .='>'.$row['order_status'].'</p>
+        $output .='>';
+        
+        if($row['delivery_status']=='delivered')
+        {
+            $output .=''.ucwords($row['delivery_status']).'';
+        }
+        else
+        {
+            $output .= ''.ucwords($row['order_status']).'';
+        }
+        
+        $output .='</p>
                     </td>
                     <td class="quantity">
                         <p>'.$row['quantity'].'</p>
@@ -196,6 +211,9 @@ else
                     <th>
                         <p>Name</p>
                     </th>
+                    <th>
+                        <p>Order Status</p>
+                    </th> 
                     <th>
                         <p>Quantity</p>
                     </th> 
@@ -241,6 +259,45 @@ else
                 <td class="product-name">
                     <p>'.ucwords($row2['product_name']).'</p>
                 </td>
+
+                <td class="quantity">
+                <p ';
+
+                if($row['order_status']=='pending')
+                {
+                    $output .='style="color: #ffa000;"';
+                }
+                else if($row['delivered_status']=='delivered')
+                {
+                    $output .='style="color: #fff;"';
+                }
+                else if($row['order_status']=='confirm')
+                {
+                    $output .='style="color: green;"';
+                }
+                else if($row['order_status']=='canceled')
+                {
+                    $output .='style="color: red;"';
+                }
+                else
+                {
+                    $output .='style="color: #000;"';
+                }     
+                                
+                $output .='>';
+
+                if($row['delivery_status']=='delivered')
+                {
+                    $output .=''.ucwords($row['delivery_status']).'';
+                }
+                else
+                {
+                    $output .= ''.ucwords($row['order_status']).'';
+                }
+
+                $output .='</p>
+                            </td>
+
                 <td class="quantity">
                     <p>'.$row['quantity'].'</p>
                 </td>

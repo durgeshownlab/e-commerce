@@ -256,6 +256,42 @@
 
             });
 
+            // code for order cancel button 
+            $(document).on("click", "#cancel-order-user", function(e){
+                // console.log("add clicked");
+                // $("body").css("overflow", "auto");
+                if(confirm('Do you Really want cancel order'))
+                {
+                    let order_id=$(this).data('order-id');
+                    console.log(order_id);
+                    $.ajax({
+                        url: "/e-commerce/php/cancelOrder.php",
+                        type: "POST",
+                        data: {order_id: order_id},
+                        success: function(data) {
+                            if(data==1)
+                            {
+                                loadOrders();
+                                console.log('order canceled');
+                                $('.user-operation-container').hide();
+                                closeForm();
+
+                            }
+                            else if(data==0)
+                            {
+                                console.log('order could not be canceled');
+                                closeForm();
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+
+            });
+
 
              // code for when user click on his order to view details
              $(document).on("click", ".order-item", function(e) {
@@ -683,6 +719,14 @@
                         $(".product-item-container").html(data);
                     }
                 });
+            }
+
+            //function for closing the form
+            function closeForm()
+            {
+                $(".form-container").remove();
+                $(".add-product-form-container").css("display", "none");
+                $("body").css("overflow", "auto");
             }
 
         });
